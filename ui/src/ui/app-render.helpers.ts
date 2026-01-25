@@ -7,7 +7,7 @@ import type { AppViewState } from "./app-view-state.ts";
 import { OpenClawApp } from "./app.ts";
 import { ChatState, loadChatHistory } from "./controllers/chat.ts";
 import { icons } from "./icons.ts";
-import { iconForTab, pathForTab, titleForTab, type Tab } from "./navigation.ts";
+import { iconForTab, pathForTab, titleForTab, TAB_GROUPS, type Tab } from "./navigation.ts";
 import type { ThemeTransitionContext } from "./theme-transition.ts";
 import type { ThemeMode } from "./theme.ts";
 import type { SessionsListResult } from "./types.ts";
@@ -71,6 +71,13 @@ export function renderTab(state: AppViewState, tab: Tab) {
             resetChatStateForSessionSwitch(state, mainSessionKey);
             void state.loadAssistantIdentity();
           }
+        }
+        // Auto-expand the group containing this tab
+        const group = TAB_GROUPS.find((g) => g.tabs.includes(tab));
+        if (group && state.settings.navGroupsCollapsed[group.label]) {
+          const next = { ...state.settings.navGroupsCollapsed };
+          next[group.label] = false;
+          state.applySettings({ ...state.settings, navGroupsCollapsed: next });
         }
         state.setTab(tab);
       }}
