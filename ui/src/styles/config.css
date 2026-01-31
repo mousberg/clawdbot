@@ -11,6 +11,7 @@
   margin: -16px;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
+  overflow: hidden;
   background: var(--panel);
 }
 
@@ -35,7 +36,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 18px;
+  padding: 0 18px;
+  height: 56px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -233,7 +235,6 @@
 .config-mode-toggle__btn.active {
   background: var(--accent);
   color: white;
-  box-shadow: var(--shadow-sm);
 }
 
 /* ===========================================
@@ -255,7 +256,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 14px 22px;
+  padding: 0 22px;
+  height: 56px;
   background: var(--bg-accent);
   border-bottom: 1px solid var(--border);
 }
@@ -864,7 +866,6 @@
 .cfg-segmented__btn.active {
   background: var(--accent);
   color: white;
-  box-shadow: var(--shadow-sm);
 }
 
 .cfg-segmented__btn:disabled {
