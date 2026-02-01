@@ -1813,7 +1813,7 @@ kbd + kbd {
   z-index: 5;
   margin-top: 0;
   padding-top: 12px;
-  background: linear-gradient(180deg, transparent 0%, var(--bg) 40%);
+  background: linear-gradient(180deg, transparent 0%, var(--bg-accent) 40%);
 }
 
 .shell--chat-focus .chat-compose {
