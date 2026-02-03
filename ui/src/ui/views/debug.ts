@@ -71,25 +71,23 @@ export function renderDebug(props: DebugProps) {
       <div class="card">
         <div class="card-title">Manual RPC</div>
         <div class="card-sub">Send a raw gateway method with JSON params.</div>
-        <div class="form-grid" style="margin-top: 16px;">
-          <label class="field">
-            <span>Method</span>
-            <input
-              .value=${props.callMethod}
-              @input=${(e: Event) => props.onCallMethodChange((e.target as HTMLInputElement).value)}
-              placeholder="system-presence"
-            />
-          </label>
-          <label class="field">
-            <span>Params (JSON)</span>
-            <textarea
-              .value=${props.callParams}
-              @input=${(e: Event) =>
-                props.onCallParamsChange((e.target as HTMLTextAreaElement).value)}
-              rows="6"
-            ></textarea>
-          </label>
-        </div>
+        <label class="field" style="margin-top: 16px; max-width: 320px;">
+          <span>Method</span>
+          <input
+            .value=${props.callMethod}
+            @input=${(e: Event) => props.onCallMethodChange((e.target as HTMLInputElement).value)}
+            placeholder="system-presence"
+          />
+        </label>
+        <label class="field" style="margin-top: 12px;">
+          <span>Params (JSON)</span>
+          <textarea
+            .value=${props.callParams}
+            @input=${(e: Event) =>
+              props.onCallParamsChange((e.target as HTMLTextAreaElement).value)}
+            rows="4"
+          ></textarea>
+        </label>
         <div class="row" style="margin-top: 12px;">
           <button class="btn primary" @click=${props.onCall}>Call</button>
         </div>
@@ -130,14 +128,14 @@ export function renderDebug(props: DebugProps) {
             <div class="list" style="margin-top: 12px;">
               ${props.eventLog.map(
                 (evt) => html`
-                  <div class="list-item">
-                    <div class="list-main">
-                      <div class="list-title">${evt.event}</div>
-                      <div class="list-sub">${new Date(evt.ts).toLocaleTimeString()}</div>
-                    </div>
-                    <div class="list-meta">
-                      <pre class="code-block">${formatEventPayload(evt.payload)}</pre>
-                    </div>
+                  <div class="list-item" style="grid-template-columns: 1fr;">
+                    <details>
+                      <summary style="display: flex; justify-content: space-between; align-items: baseline; cursor: pointer; list-style: none;">
+                        <div class="list-title">${evt.event}</div>
+                        <div class="list-sub">${new Date(evt.ts).toLocaleTimeString()}</div>
+                      </summary>
+                      <pre class="code-block" style="margin-top: 8px; max-height: 300px;">${formatEventPayload(evt.payload)}</pre>
+                    </details>
                   </div>
                 `,
               )}
