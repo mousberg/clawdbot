@@ -659,6 +659,10 @@ kbd + kbd {
   position: relative;
 }
 
+.callout + .callout {
+  margin-top: 8px;
+}
+
 .callout.danger {
   border-color: rgba(239, 68, 68, 0.25);
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.04) 100%);
@@ -2464,7 +2468,8 @@ kbd + kbd {
 
 /* Crab walking animation - side to side sway */
 @keyframes crab-walk {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(-2px) rotate(-2deg);
   }
   50% {
@@ -2474,7 +2479,8 @@ kbd + kbd {
 
 /* Left claw pinching */
 @keyframes claw-pinch-left {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(0deg);
   }
   50% {
@@ -2484,7 +2490,8 @@ kbd + kbd {
 
 /* Right claw pinching */
 @keyframes claw-pinch-right {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(0deg);
   }
   50% {
@@ -2494,7 +2501,9 @@ kbd + kbd {
 
 /* Bouncing dots */
 @keyframes dot-bounce {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     opacity: 0.4;
     transform: translateY(0);
   }
