@@ -9,9 +9,7 @@
   gap: 0;
   min-height: 0;
   flex: 1;
-  margin: -16px;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
+  margin: 0 -16px -32px;
   overflow: hidden;
   background: var(--panel);
 }
@@ -1338,30 +1336,43 @@
 @media (max-width: 768px) {
   .config-layout {
     grid-template-columns: 1fr;
+    margin: 0 -16px -16px;
   }
 
   .config-sidebar {
+    flex: none;
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 
+  /* Hide sidebar header on mobile - save space */
   .config-sidebar__header {
-    padding: 14px 16px;
+    display: none;
+  }
+
+  /* Hide search on mobile - not practical */
+  .config-search {
+    display: none;
   }
 
   .config-nav {
+    flex: none;
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     gap: 6px;
-    padding: 10px 14px;
+    padding: 12px 16px;
     overflow-x: auto;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
   }
 
   .config-nav__item {
     flex: 0 0 auto;
-    padding: 9px 14px;
+    width: auto;
+    padding: 8px 14px;
     white-space: nowrap;
+    border-radius: var(--radius-full);
   }
 
   .config-nav__label {
@@ -1372,15 +1383,37 @@
     display: none;
   }
 
+  /* Sticky action bar at bottom on mobile */
   .config-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     flex-wrap: wrap;
-    padding: 14px 16px;
+    gap: 8px;
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 100;
   }
 
-  .config-actions__left,
+  .config-actions__left {
+    display: none;
+  }
+
   .config-actions__right {
     width: 100%;
     justify-content: center;
+    gap: 8px;
+  }
+
+  .config-content {
+    padding: 16px;
+    padding-bottom: 80px; /* Account for sticky action bar */
+    min-height: 0;
+    flex: 1;
   }
 
   .config-section-hero {
@@ -1391,16 +1424,12 @@
     padding: 10px 16px 12px;
   }
 
-  .config-content {
-    padding: 18px;
-  }
-
   .config-section-card__header {
-    padding: 16px 18px;
+    padding: 14px 16px;
   }
 
   .config-section-card__content {
-    padding: 18px;
+    padding: 16px;
   }
 
   .cfg-toggle-row {
@@ -1418,23 +1447,28 @@
 }
 
 @media (max-width: 480px) {
+  .config-nav__item {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
   .config-nav__icon {
-    width: 26px;
-    height: 26px;
-    font-size: 17px;
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
   }
 
   .config-nav__label {
-    display: none;
+    display: inline;
   }
 
   .config-section-card__icon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 
   .config-section-card__title {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .cfg-segmented {
